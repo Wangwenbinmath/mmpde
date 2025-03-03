@@ -1,8 +1,7 @@
 import numpy as np
 from fealpy.mesh import TriangleMesh
 from fealpy.mesh import TetrahedronMesh
-from app.mmpde.harmap_mmpde import *
-from poisson_data_2d import PDEData_2d
+from harmap_mmpde import *
 
 def thr(p):
     x = p[...,0]
@@ -16,7 +15,7 @@ def thr(p):
         return in_x & in_y & in_z
     return  in_x & in_y
 
-pde = PDEData_2d('1/(1+ exp(50*(x+y-1)))', 'x', 'y')
+# pde = PDEData_2d('1/(1+ exp(50*(x+y-1)))', 'x', 'y')
 np.set_printoptions(threshold=np.inf)
 n = 5
 

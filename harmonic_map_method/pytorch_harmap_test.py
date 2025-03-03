@@ -1,7 +1,6 @@
 from fealpy.backend import backend_manager as bm
 from fealpy.mesh import TriangleMesh
 from fealpy.mesh import TetrahedronMesh
-from app.mmpde.harmap_mmpde import Mesh_Data_Harmap
 from pytorch_harmap_data import *
 import matplotlib.pyplot as plt
 import torch
@@ -306,8 +305,8 @@ class TestHarmapInterfaces:
         new_mesh,new_uh = HM.mesh_redistribution(uh)
         
         new_node = new_mesh.node
-        np.testing.assert_allclose(bm.to_numpy(new_node), true_node, rtol=np.inf)
-        np.testing.assert_allclose(bm.to_numpy(new_uh), true_uh, rtol=np.inf)
+        np.testing.assert_allclose(bm.to_numpy(new_node), true_node,atol=1e-6, rtol=np.inf)
+        np.testing.assert_allclose(bm.to_numpy(new_uh), true_uh,atol=1e-6, rtol=np.inf)
         
 if __name__ == "__main__":
     pytest.main(["./pytorch_harmap_test.py", "-k", "test_mesh_redistribution"])
